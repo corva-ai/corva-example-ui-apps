@@ -1,0 +1,19 @@
+{
+  "name": "Corva-example-ui-apps",
+  "version": "0.0.1",
+  "description": "Corva repository for UI apps",
+  "main": "index.js",
+  "author": "Corva",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2"
+  },
+  "dependencies": {
+    "@corva/ui": "0.5.31"
+  }
+}
