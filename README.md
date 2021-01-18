@@ -1,6 +1,6 @@
 # CORVA EXAMPLE UI APPS
 
-> This repo contains all devcenter UI apps of Corva company
+> This repo contains all shared devcenter UI apps of Corva company
 
 All Developers working in this codebase MUST follow the [Contributing
 Guidelines](https://corvaqa.atlassian.net/wiki/spaces/SE/pages/333086721/Co)
