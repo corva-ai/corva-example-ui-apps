@@ -1,0 +1,31 @@
+{
+  "format": 1,
+  "license": {
+    "type": "MIT",
+    "url": "https://www.oandgexample.com/license/"
+  },
+  "developer": {
+    "authors": []
+  },
+  "application": {
+    "type": "ui",
+    "key": "corva.sample_gamma_depth.ui",
+    "visibility": "private",
+    "name": "Sample Gamma Depth",
+    "category": "asset",
+    "segment": "drilling",
+    "ui": {
+      "initial_size": {
+        "w": 4,
+        "h": 10
+      }
+    }
+  },
+  "settings": {
+    "entrypoint": {
+      "file": "src/index.js"
+    }
+  },
+  "environment": {},
+  "datasets": {}
+}

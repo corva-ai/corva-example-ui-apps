@@ -1,0 +1,71 @@
+{
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier", "react-hooks"],
+  "parser": "babel-eslint",
+  "rules": {
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-space-before-closing": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "react/jsx-filename-extension": [ "error", {
+      "extensions": [".js", ".jsx"]
+    }],
+    "react/prop-types": [ "error", {
+      "ignore": ["router", "params", "location", "classes"]
+    }],
+    "react/no-did-update-set-state": "off",
+    "react/destructuring-assignment": "off",
+    # NOTE: Block below was disabled after update to ESLint 5
+    "react/no-access-state-in-setstate": "off",
+    "react/no-this-in-sfc": "off",
+    "react/sort-comp": "off",
+    "react/button-has-type": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-wrap-multilines": "off",
+    "react/jsx-tag-spacing": "off",
+    "operator-linebreak": "off",
+    "no-else-return": "off",
+    "implicit-arrow-linebreak": "off",
+    "comma-dangle": ["error","only-multiline"],
+    "max-len": "off",
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      # NOTE: Waits for 'to' attribute instead of 'href' in Link component
+      "components": ["Link"],
+      "specialLink": ["to"]
+    }],
+    "camelcase": [ "error", {
+      "allow": ["^UNSAFE_"],
+      "properties": "never"
+    }],
+    "class-methods-use-this": "off",
+    "no-console": [ "warn", {
+      "allow": ["error"]
+    }],
+    "no-underscore-dangle": [ "error", {
+      "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"]
+    }],
+    "no-extend-native": [ "error", {
+      "exceptions": ["Number"]
+    }],
+    # TODO: Setup linebreaks from CRLF to LF on Windows machines
+    "linebreak-style": "off",
+    # NOTE: Accessibility rules
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+  },
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    # Specs
+    "it": true,
+    "expect": true,
+    "describe": true,
+    "jest": true,
+    "beforeEach": true,
+    "afterEach": true
+  }
+}
