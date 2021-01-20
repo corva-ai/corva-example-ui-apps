@@ -16,7 +16,15 @@ function getRandomInt(min, max) {
 }
 
 export function App(props) {
-  const { isExampleCheckboxChecked, app, currentUser, annotationsProps, coordinates, well } = props;
+  const {
+    isExampleCheckboxChecked,
+    app,
+    currentUser,
+    annotationsProps,
+    coordinates,
+    well,
+    wellId,
+  } = props;
   const [gammaData, setGammaData] = useState([[0, 0]]);
   // NOTE: This is temporary and will be replaced with a real-time subscription. This is only here for mocking purposes.
   useEffect(() => {

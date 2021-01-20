@@ -14,18 +14,10 @@ function AppSettings({
   user,
   company,
 }) {
+  console.log({ appData, app, user, company });
   const settings = { ...DEFAULT_SETTINGS, ...apiSettings };
   return (
     <div>
-      <FormControlLabel
-        label="Example checkbox"
-        control={
-          <Checkbox
-            checked={settings.isExampleCheckboxChecked}
-            onChange={e => onSettingChange('isExampleCheckboxChecked', e.target.checked)}
-          />
-        }
-      />
       <AppSettingsAssetEditor
         settings={settings}
         onAssetChange={onSettingChange}
@@ -43,6 +35,7 @@ function AppSettings({
         isNullable={false}
         label="Active Asset"
       />
+      `
     </div>
   );
 }
