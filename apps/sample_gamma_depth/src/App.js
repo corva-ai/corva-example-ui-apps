@@ -3,9 +3,10 @@ import { AppHeader } from '@corva/ui/components';
 import { DEFAULT_SETTINGS } from './constants';
 import { useSubscriptions } from '@corva/ui/effects';
 
-import { getGammaSubscription } from './utils/subscriptions';
+import { getGammaDepthData } from './utils/apiCalls';
 
 import GammaChart from './components/GammaChart';
+import NoGammaData from './components/NoGammaData';
 
 import styles from './App.css';
 
@@ -16,31 +17,27 @@ function getRandomInt(min, max) {
 }
 
 export function App(props) {
-  const {
-    isExampleCheckboxChecked,
-    app,
-    currentUser,
-    annotationsProps,
-    coordinates,
-    well,
-    wellId,
-  } = props;
-  const [gammaData, setGammaData] = useState([[0, 0]]);
-  // NOTE: This is temporary and will be replaced with a real-time subscription. This is only here for mocking purposes.
+  const { isExampleCheckboxChecked, app, currentUser, annotationsProps, coordinates, rig } = props;
+  const [gammaData, setGammaData] = useState([]);
+  // NOTE: This is temporary and will be replaced with a real-time subscription. There are still issues with the asset selector currently cannont select the specific asset with gamma data.
   useEffect(() => {
-    setInterval(() => {
-      setGammaData(prev => [
-        ...prev,
-        [getRandomInt(prev.slice(-1)[0][0], prev.slice(-1)[0][0] + 20), getRandomInt(20, 100)],
-      ]);
-    }, 5000);
-    return clearInterval();
-  }, []);
+    const fetchData = async () => {
+      const data = await getGammaDepthData(rig.id);
+      console.log(data);
+      setGammaData(data);
+    };
+    fetchData();
+  }, [rig]);
+
   return (
     <div className={styles.container}>
       <AppHeader app={app} currentUser={currentUser} annotationsProps={annotationsProps} />
       <div className={styles.content}>
-        <GammaChart coordinates={coordinates} data={gammaData} />
+        {gammaData.length ? (
+          <GammaChart coordinates={coordinates} data={gammaData} />
+        ) : (
+          <NoGammaData />
+        )}
       </div>
     </div>
   );
