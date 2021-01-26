@@ -1,9 +1,21 @@
-import { Checkbox, FormControlLabel } from '@material-ui/core';
-
 import { AppSettingsAssetEditor } from '@corva/ui/components';
 import { ASSET_TYPES } from '@corva/ui/constants';
 
+import { makeStyles, Divider } from '@material-ui/core';
+
 import { DEFAULT_SETTINGS } from './constants';
+import ScaleSettings from './components/ScaleSettings';
+
+const useStyles = makeStyles({
+  settingsWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  dividerStyles: {
+    marginBottom: '10px',
+    borderBottom: '1px solid #888',
+  },
+});
 
 function AppSettings({
   settings: apiSettings,
@@ -15,17 +27,10 @@ function AppSettings({
   company,
 }) {
   const settings = { ...DEFAULT_SETTINGS, ...apiSettings };
+  const { settingsWrapper, dividerStyles } = useStyles();
   return (
-    <div>
-      <FormControlLabel
-        label="Example checkbox"
-        control={
-          <Checkbox
-            checked={settings.isExampleCheckboxChecked}
-            onChange={e => onSettingChange('isExampleCheckboxChecked', e.target.checked)}
-          />
-        }
-      />
+    <div className={settingsWrapper}>
+      <Divider className={dividerStyles} />
       <AppSettingsAssetEditor
         settings={settings}
         onAssetChange={onSettingChange}
@@ -43,6 +48,7 @@ function AppSettings({
         isNullable={false}
         label="Active Asset"
       />
+      <ScaleSettings />
     </div>
   );
 }
