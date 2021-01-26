@@ -23,11 +23,10 @@ export function App(props) {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getGammaDepthData(rig.id);
-      console.log(data);
       setGammaData(data);
     };
     fetchData();
-  }, [rig]);
+  }, [rig.id]);
 
   return (
     <div className={styles.container}>
