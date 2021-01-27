@@ -4,7 +4,7 @@ import { ASSET_TYPES } from '@corva/ui/constants';
 import { makeStyles, Divider } from '@material-ui/core';
 
 import { DEFAULT_SETTINGS } from './constants';
-import ScaleSettings from './components/ScaleSettings';
+import ScaleSettings from './components/scaleSettings';
 
 const useStyles = makeStyles({
   settingsWrapper: {
@@ -30,7 +30,6 @@ function AppSettings({
   const { settingsWrapper, dividerStyles } = useStyles();
   return (
     <div className={settingsWrapper}>
-      <Divider className={dividerStyles} />
       <AppSettingsAssetEditor
         settings={settings}
         onAssetChange={onSettingChange}
