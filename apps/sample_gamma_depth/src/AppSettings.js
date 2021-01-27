@@ -11,10 +11,6 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
   },
-  dividerStyles: {
-    marginBottom: '10px',
-    borderBottom: '1px solid #888',
-  },
 });
 
 function AppSettings({
@@ -27,12 +23,14 @@ function AppSettings({
   company,
 }) {
   const settings = { ...DEFAULT_SETTINGS, ...apiSettings };
-  const { settingsWrapper, dividerStyles } = useStyles();
+  const { settingsWrapper } = useStyles();
 
   const handleScaleSettingChange = e => {
     const { name, value } = e.target;
+    // NOTE: we want to allow this value to be null or numeric
+    const updatedValue = value === '' ? null : Number(value);
     onSettingsChange({
-      scaleSettings: { ...settings.scaleSettings, [name]: value },
+      scaleSettings: { ...settings.scaleSettings, [name]: updatedValue },
     });
   };
   return (

@@ -10,29 +10,31 @@ import NoGammaData from './components/NoGammaData';
 
 import styles from './App.css';
 
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 export function App(props) {
-  const { isExampleCheckboxChecked, app, currentUser, annotationsProps, coordinates, rig } = props;
+  const {
+    isExampleCheckboxChecked,
+    app,
+    currentUser,
+    annotationsProps,
+    coordinates,
+    rigId,
+    scaleSettings,
+  } = props;
   const [gammaData, setGammaData] = useState([]);
   // NOTE: This is temporary and will be replaced with a real-time subscription. There are still issues with the asset selector currently cannont select the specific asset with gamma data.
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getGammaDepthData(rig.id);
+      const data = await getGammaDepthData(56033063);
       setGammaData(data);
     };
     fetchData();
-  }, [rig]);
+  }, [rigId]);
   return (
     <div className={styles.container}>
       <AppHeader app={app} currentUser={currentUser} annotationsProps={annotationsProps} />
       <div className={styles.content}>
         {gammaData.length ? (
-          <GammaChart coordinates={coordinates} data={gammaData} />
+          <GammaChart coordinates={coordinates} data={gammaData} scaleSettings={scaleSettings} />
         ) : (
           <NoGammaData />
         )}

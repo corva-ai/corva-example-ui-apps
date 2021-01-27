@@ -14,7 +14,6 @@ const useStyles = makeStyles({
 
 const MeasuredDepthSettings = ({ depthSettings, onSettingsChange }) => {
   const { formControl, textFields } = useStyles();
-  console.log(depthSettings);
   return (
     <FormControl className={formControl}>
       <TextField

@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     marginTop: '1rem',
     display: 'flex',
     alignItems: 'center',
+    cursor: 'pointer',
   },
 });
 
@@ -23,14 +24,10 @@ const ScaleSettings = ({ scaleSettings, handleScaleSettingsChange }) => {
   };
   return (
     <div>
-      <div className={scaleSettingsContainer}>
+      <span className={scaleSettingsContainer} onClick={toggleScalesSettings}>
         <Typography variant="h6">Scale Settings</Typography>
-        {scalesExpanded ? (
-          <ExpandLessIcon onClick={toggleScalesSettings} />
-        ) : (
-          <ExpandMoreIcon onClick={toggleScalesSettings} />
-        )}
-      </div>
+        {scalesExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+      </span>
       <div>
         {scalesExpanded && (
           <Fragment>
