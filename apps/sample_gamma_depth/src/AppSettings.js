@@ -28,6 +28,13 @@ function AppSettings({
 }) {
   const settings = { ...DEFAULT_SETTINGS, ...apiSettings };
   const { settingsWrapper, dividerStyles } = useStyles();
+
+  const handleScaleSettingChange = e => {
+    const { name, value } = e.target;
+    onSettingsChange({
+      scaleSettings: { ...settings.scaleSettings, [name]: value },
+    });
+  };
   return (
     <div className={settingsWrapper}>
       <AppSettingsAssetEditor
@@ -47,7 +54,10 @@ function AppSettings({
         isNullable={false}
         label="Active Asset"
       />
-      <ScaleSettings />
+      <ScaleSettings
+        scaleSettings={settings.scaleSettings}
+        handleScaleSettingsChange={handleScaleSettingChange}
+      />
     </div>
   );
 }

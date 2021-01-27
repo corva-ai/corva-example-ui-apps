@@ -12,31 +12,38 @@ const useStyles = makeStyles({
   },
 });
 
-const MeasuredDepthSettings = () => {
+const MeasuredDepthSettings = ({ depthSettings, onSettingsChange }) => {
   const { formControl, textFields } = useStyles();
+  console.log(depthSettings);
   return (
     <FormControl className={formControl}>
       <TextField
         fullWidth
+        type="number"
         className={textFields}
         placeholder="Auto if not set"
         name="measuredDepthMin"
         label="Measured Depth Min"
-        shrink
+        value={depthSettings.measuredDepthMin}
+        shrink="true"
         InputProps={{
           endAdornment: <InputAdornment position="end">{getUnitDisplay('length')}</InputAdornment>,
         }}
+        onChange={onSettingsChange}
       />
       <TextField
         fullWidth
+        type="number"
         className={textFields}
         placeholder="Auto if not set"
         name="measuredDepthMax"
         label="Measured Depth Max"
-        shrink
+        value={depthSettings.measuredDepthMax}
+        shrink="true"
         InputProps={{
           endAdornment: <InputAdornment position="end">{getUnitDisplay('length')}</InputAdornment>,
         }}
+        onChange={onSettingsChange}
       />
     </FormControl>
   );

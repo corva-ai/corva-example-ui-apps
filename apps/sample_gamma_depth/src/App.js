@@ -26,8 +26,7 @@ export function App(props) {
       setGammaData(data);
     };
     fetchData();
-  }, [rig.id]);
-
+  }, [rig]);
   return (
     <div className={styles.container}>
       <AppHeader app={app} currentUser={currentUser} annotationsProps={annotationsProps} />

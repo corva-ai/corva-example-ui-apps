@@ -13,7 +13,8 @@ const useStyles = makeStyles({
   },
 });
 
-const ScaleSettings = () => {
+const ScaleSettings = ({ scaleSettings, handleScaleSettingsChange }) => {
+  const { measuredDepthMax, measuredDepthMin, gammaRayMax, gammaRayMin } = scaleSettings;
   const { scaleSettingsContainer } = useStyles();
   const [scalesExpanded, setScalesExpanded] = useState(false);
 
@@ -33,8 +34,14 @@ const ScaleSettings = () => {
       <div>
         {scalesExpanded && (
           <Fragment>
-            <MeasuredDepthSettings />
-            <GammaRaySettings />
+            <MeasuredDepthSettings
+              depthSettings={{ measuredDepthMax, measuredDepthMin }}
+              onSettingsChange={handleScaleSettingsChange}
+            />
+            <GammaRaySettings
+              gammaSettings={{ gammaRayMax, gammaRayMin }}
+              onSettingsChange={handleScaleSettingsChange}
+            />
           </Fragment>
         )}
       </div>
