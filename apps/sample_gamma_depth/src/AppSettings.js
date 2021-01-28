@@ -1,9 +1,17 @@
-import { Checkbox, FormControlLabel } from '@material-ui/core';
-
 import { AppSettingsAssetEditor } from '@corva/ui/components';
 import { ASSET_TYPES } from '@corva/ui/constants';
 
+import { makeStyles, Divider } from '@material-ui/core';
+
 import { DEFAULT_SETTINGS } from './constants';
+import ScaleSettings from './components/scaleSettings';
+
+const useStyles = makeStyles({
+  settingsWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+});
 
 function AppSettings({
   settings: apiSettings,
@@ -15,17 +23,18 @@ function AppSettings({
   company,
 }) {
   const settings = { ...DEFAULT_SETTINGS, ...apiSettings };
+  const { settingsWrapper } = useStyles();
+
+  const handleScaleSettingChange = e => {
+    const { name, value } = e.target;
+    // NOTE: we want to allow this value to be null or numeric
+    const updatedValue = value === '' ? null : Number(value);
+    onSettingsChange({
+      scaleSettings: { ...settings.scaleSettings, [name]: updatedValue },
+    });
+  };
   return (
-    <div>
-      <FormControlLabel
-        label="Example checkbox"
-        control={
-          <Checkbox
-            checked={settings.isExampleCheckboxChecked}
-            onChange={e => onSettingChange('isExampleCheckboxChecked', e.target.checked)}
-          />
-        }
-      />
+    <div className={settingsWrapper}>
       <AppSettingsAssetEditor
         settings={settings}
         onAssetChange={onSettingChange}
@@ -42,6 +51,10 @@ function AppSettings({
         }}
         isNullable={false}
         label="Active Asset"
+      />
+      <ScaleSettings
+        scaleSettings={settings.scaleSettings}
+        handleScaleSettingsChange={handleScaleSettingChange}
       />
     </div>
   );

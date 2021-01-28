@@ -4,7 +4,8 @@ import HighchartsReact from 'highcharts-react-official';
 
 import { getUnitDisplay } from '@corva/ui/utils';
 
-const GammaChart = ({ coordinates, data }) => {
+const GammaChart = ({ coordinates, data, scaleSettings }) => {
+  const { measuredDepthMin, measuredDepthMax, gammaRayMin, gammaRayMax } = scaleSettings;
   const chartRef = useRef(null);
   const chartContainerProps = { style: { height: '100%', width: '100%' } };
   const options = {
@@ -40,6 +41,8 @@ const GammaChart = ({ coordinates, data }) => {
       },
     },
     yAxis: {
+      min: gammaRayMin,
+      max: gammaRayMax,
       gridLineWidth: 1,
       gridLineColor: 'rgb(65, 65, 65)',
       lineColor: 'rgb(65,65,65)',
@@ -52,6 +55,8 @@ const GammaChart = ({ coordinates, data }) => {
       },
     },
     xAxis: {
+      min: measuredDepthMin,
+      max: measuredDepthMax,
       gridLineWidth: 1,
       gridLineColor: 'rgb(65,65,65)',
       tickInterval: 1,
