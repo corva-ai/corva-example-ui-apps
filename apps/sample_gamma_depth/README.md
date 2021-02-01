@@ -1,4 +1,10 @@
-# Getting Started with Create Corva App
+# Sample Gamma Depth
+
+## Project Overview
+
+In this project our goal is to display Depth vs Gamma Ray data for a specific asset. This version of the app fetches data from a static collection by asset id. Future versions of this app will be subscribed to a dataset for continuous live updates.
+This data is then formatted into an accepted Highcharts data format which can be an array of cardinal points as either [x, y] or {name, x, y}. For out use case we're simple using the former x being our measured depth value and y being our gamma ray value.
+To make changes to the chart, you would simple update the options object in the GammaChart component. Here you can edit the the chart's type, appearance, and series data.
 
 ## Available Scripts
 
@@ -16,7 +22,7 @@ You will also see any lint errors in the console.
 
 Bundles the app into static files for production.
 
-### `yarn  zip`
+### `yarn zip`
 
 Bundles the app into ZIP file in app root directory
 
