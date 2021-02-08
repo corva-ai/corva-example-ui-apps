@@ -1,9 +1,8 @@
 import { getDataAppStorage } from '@corva/ui/clients/jsonApi';
 
-const provider = 'big-data-energy';
 const collectionName = 'actual-gamma-depth';
 
-export async function getGammaDepthData(assetId) {
+export async function getGammaDepthData(assetId, provider) {
   let response = [];
 
   try {
