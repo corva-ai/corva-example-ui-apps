@@ -1,14 +1,17 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useMemo } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
 import { getUnitDisplay } from '@corva/ui/utils';
 
-const GammaChart = ({ coordinates, data, scaleSettings }) => {
-  const { measuredDepthMin, measuredDepthMax, gammaRayMin, gammaRayMax } = scaleSettings;
-  const chartRef = useRef(null);
-  const chartContainerProps = { style: { height: '100%', width: '100%' } };
-  const options = {
+const getChartOptions = ({
+  data,
+  measuredDepthMin,
+  measuredDepthMax,
+  gammaRayMin,
+  gammaRayMax,
+}) => {
+  return {
     chart: {
       zoomType: 'xy',
       type: 'spline',
@@ -81,6 +84,7 @@ const GammaChart = ({ coordinates, data, scaleSettings }) => {
     },
     plotOptions: {
       spline: {
+        crisp: true,
         marker: {
           enabled: false,
         },
@@ -88,28 +92,42 @@ const GammaChart = ({ coordinates, data, scaleSettings }) => {
     },
     series: [
       {
-        dataSorting: {
-          enabled: false,
-        },
         data,
         color: '#3EC35F',
         name: 'Gamma Ray',
       },
     ],
   };
+};
+
+const GammaChart = ({ coordinates, data, scaleSettings }) => {
+  const { measuredDepthMin, measuredDepthMax, gammaRayMin, gammaRayMax } = scaleSettings;
+  const chartRef = useRef(null);
+  const chartContainerProps = { style: { height: '100%', width: '100%' } };
   useEffect(() => {
     // NOTE: Update chart size when container size has changed
     if (chartRef.current) chartRef.current.chart.setSize();
-  }, [coordinates]);
+  }, [coordinates.w, coordinates.h, coordinates.pixelWidth]);
 
-  return (
-    <HighchartsReact
-      ref={chartRef}
-      highcharts={Highcharts}
-      options={options}
-      containerProps={chartContainerProps}
-    />
-  );
+  return useMemo(() => {
+    const options = getChartOptions({
+      data,
+      measuredDepthMin,
+      measuredDepthMax,
+      gammaRayMin,
+      gammaRayMax,
+    });
+    return (
+      options && (
+        <HighchartsReact
+          ref={chartRef}
+          highcharts={Highcharts}
+          options={options}
+          containerProps={chartContainerProps}
+        />
+      )
+    );
+  }, [data, measuredDepthMin, measuredDepthMax, gammaRayMin, gammaRayMax]);
 };
 
 export default GammaChart;
