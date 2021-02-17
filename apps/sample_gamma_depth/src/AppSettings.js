@@ -30,7 +30,6 @@ function AppSettings({
     const { name, value } = e.target;
     // NOTE: we want to allow this value to be null or numeric
     const updatedValue = value === '' ? null : Number(value);
-    console.log(getConvertedSaveValue(updatedValue));
     onSettingsChange({
       scaleSettings: { ...settings.scaleSettings, [name]: getConvertedSaveValue(updatedValue) },
     });
