@@ -4,6 +4,8 @@ import HighchartsReact from 'highcharts-react-official';
 
 import { getUnitDisplay } from '@corva/ui/utils';
 
+import { getConvertedValue } from '../utils/dataProcessing';
+
 const getChartOptions = ({
   data,
   measuredDepthMin,
@@ -58,8 +60,8 @@ const getChartOptions = ({
       },
     },
     xAxis: {
-      min: measuredDepthMin,
-      max: measuredDepthMax,
+      min: getConvertedValue(measuredDepthMin),
+      max: getConvertedValue(measuredDepthMax),
       gridLineWidth: 1,
       gridLineColor: 'rgb(65,65,65)',
       tickInterval: 1,

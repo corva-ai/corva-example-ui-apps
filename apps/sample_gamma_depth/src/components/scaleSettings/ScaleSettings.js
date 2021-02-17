@@ -4,6 +4,7 @@ import { ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon } from '@mat
 
 import MeasuredDepthSettings from './MeasuredDepthSettings';
 import GammaRaySettings from './GammaRaySettings';
+import { getConvertedValue } from '../../utils/dataProcessing';
 
 const useStyles = makeStyles({
   scaleSettingsContainer: {
@@ -32,7 +33,10 @@ const ScaleSettings = ({ scaleSettings, handleScaleSettingsChange }) => {
         {scalesExpanded && (
           <Fragment>
             <MeasuredDepthSettings
-              depthSettings={{ measuredDepthMax, measuredDepthMin }}
+              depthSettings={{
+                depthMax: getConvertedValue(measuredDepthMax),
+                depthMin: getConvertedValue(measuredDepthMin),
+              }}
               onSettingsChange={handleScaleSettingsChange}
             />
             <GammaRaySettings

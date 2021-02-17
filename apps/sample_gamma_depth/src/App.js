@@ -27,7 +27,6 @@ export function App(props) {
   const [gammaData, setGammaData] = useState([]);
   // NOTE: This is temporary and will be replaced with a real-time subscription. There are still issues with the asset selector currently cannont select the specific asset with gamma data.
   useEffect(() => {
-    console.log(assetId);
     const fetchData = async () => {
       setLoading(true);
       const data = await getGammaDepthData(assetId, provider);

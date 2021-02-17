@@ -5,6 +5,7 @@ import { makeStyles, Divider } from '@material-ui/core';
 
 import { DEFAULT_SETTINGS } from './constants';
 import ScaleSettings from './components/scaleSettings';
+import { getConvertedSaveValue } from './utils/dataProcessing';
 
 const useStyles = makeStyles({
   settingsWrapper: {
@@ -29,8 +30,9 @@ function AppSettings({
     const { name, value } = e.target;
     // NOTE: we want to allow this value to be null or numeric
     const updatedValue = value === '' ? null : Number(value);
+    console.log(getConvertedSaveValue(updatedValue));
     onSettingsChange({
-      scaleSettings: { ...settings.scaleSettings, [name]: updatedValue },
+      scaleSettings: { ...settings.scaleSettings, [name]: getConvertedSaveValue(updatedValue) },
     });
   };
   return (
