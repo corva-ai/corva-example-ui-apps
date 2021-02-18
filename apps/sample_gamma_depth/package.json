@@ -10,9 +10,9 @@
   },
   "devDependencies": {
     "@corva/ui": "^0.7",
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "4.0.0-alpha.56",
+    "@material-ui/core": "4.11.2",
+    "@material-ui/icons": "4.9.1",
+    "@material-ui/lab": "4.0.0-alpha.57",
     "classnames": "2.2.6",
     "corva-convert-units": "1.10.17",
     "highcharts": "8.1.2",

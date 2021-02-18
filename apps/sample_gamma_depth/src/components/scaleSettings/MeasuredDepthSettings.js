@@ -23,7 +23,7 @@ const MeasuredDepthSettings = ({ depthSettings, onSettingsChange }) => {
         placeholder="Auto if not set"
         name="measuredDepthMin"
         label="Measured Depth Min"
-        value={depthSettings.measuredDepthMin}
+        value={depthSettings.depthMin}
         shrink="true"
         InputProps={{
           endAdornment: <InputAdornment position="end">{getUnitDisplay('length')}</InputAdornment>,
@@ -37,7 +37,7 @@ const MeasuredDepthSettings = ({ depthSettings, onSettingsChange }) => {
         placeholder="Auto if not set"
         name="measuredDepthMax"
         label="Measured Depth Max"
-        value={depthSettings.measuredDepthMax}
+        value={depthSettings.depthMax}
         shrink="true"
         InputProps={{
           endAdornment: <InputAdornment position="end">{getUnitDisplay('length')}</InputAdornment>,
