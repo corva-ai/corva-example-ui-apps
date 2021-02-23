@@ -24,7 +24,6 @@ export function App(props) {
   // NOTE: This is the only way to extract assetId from the well prop currently. Simply using well.asset_id causes issues with the incoming props.
   const assetId = Number(get(well, 'asset_id'));
   const provider = currentUser.company.provider;
-  // NOTE: This is temporary and will be replaced with a real-time subscription. There are still issues with the asset selector currently cannont select the specific asset with gamma data.
   const [{ loading, data }] = useSubscriptions([getGammaSubscription(assetId, provider)]);
   return (
     <div className={styles.container}>
