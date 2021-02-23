@@ -8,7 +8,7 @@ export async function getGammaDepthData(assetId, provider) {
 
   try {
     const queryWithAsset = JSON.stringify({ asset_id: +assetId });
-    response = await getDataAppStorage(provider, `${collectionName}/`, {
+    response = await getDataAppStorage(provider, `${collectionName}`, {
       limit: 10000,
       query: queryWithAsset,
       sort: '{"timestamp": 1}',

@@ -13,7 +13,7 @@
     "visibility": "private",
     "name": "Sample Gamma Depth",
     "category": "asset",
-    "segment": "drilling",
+    "segments": ["drilling"],
     "ui": {
       "initial_size": {
         "w": 4,
@@ -23,8 +23,10 @@
   },
   "settings": {
     "entrypoint": {
-      "file": "src/index.js"
-    }
+      "file": "src/index.js",
+      "function": "handler"
+    },
+    "runtime": "ui"
   },
   "environment": {},
   "datasets": {}
