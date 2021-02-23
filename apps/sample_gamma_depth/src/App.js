@@ -26,7 +26,6 @@ export function App(props) {
   const provider = currentUser.company.provider;
   // NOTE: This is temporary and will be replaced with a real-time subscription. There are still issues with the asset selector currently cannont select the specific asset with gamma data.
   const [{ loading, data }] = useSubscriptions([getGammaSubscription(assetId, provider)]);
-  console.log(data);
   return (
     <div className={styles.container}>
       <AppHeader app={app} currentUser={currentUser} annotationsProps={annotationsProps} />
