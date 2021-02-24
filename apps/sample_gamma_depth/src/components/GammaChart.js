@@ -4,7 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 
 import { getUnitDisplay } from '@corva/ui/utils';
 
-import { getConvertedValue } from '../utils/dataProcessing';
+import { getConvertedValue, getGammaChartArray } from '../utils/dataProcessing';
 
 const getChartOptions = ({
   data,
@@ -94,7 +94,7 @@ const getChartOptions = ({
     },
     series: [
       {
-        data,
+        data: getGammaChartArray(data),
         color: '#3EC35F',
         name: 'Gamma Ray',
       },

@@ -7,3 +7,9 @@ export const getConvertedSaveValue = value => {
 export const getConvertedValue = value => {
   return convertValue(value, 'length', 'ft', getUnitPreference('length'));
 };
+
+export const getGammaChartArray = value => {
+  const gammaData = value.map(({ data }) => [getConvertedValue(data.gamma_depth), data.gamma_ray]);
+
+  return gammaData || [];
+};

@@ -1,8 +1,9 @@
-export const getGammaSubscription = (assetId, companyId) => {
+export const getGammaSubscription = (assetId, provider) => {
   return {
-    provider: 'big-data-energy',
-    collection: 'actual-gamma-depth',
+    provider,
     assetId,
-    params: {},
+    behavior: 'accumulate',
+    collection: 'actual-gamma-depth',
+    params: { limit: 10000 },
   };
 };
