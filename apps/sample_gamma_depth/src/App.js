@@ -25,20 +25,18 @@ export function App(props) {
   const assetId = Number(get(well, 'asset_id'));
   const provider = currentUser.company.provider;
   const [{ loading, data }] = useSubscriptions([getGammaSubscription(assetId, provider)]);
+  console.log({ loading, data });
+  if (loading) return <LoadingIndicator />;
   return (
     <div className={styles.container}>
       <AppHeader app={app} currentUser={currentUser} annotationsProps={annotationsProps} />
-      {!loading ? (
-        <div className={styles.content}>
-          {data.length ? (
-            <GammaChart coordinates={coordinates} data={data} scaleSettings={scaleSettings} />
-          ) : (
-            <NoGammaData />
-          )}
-        </div>
-      ) : (
-        <LoadingIndicator />
-      )}
+      <div className={styles.content}>
+        {!loading && data.length ? (
+          <GammaChart coordinates={coordinates} data={data} scaleSettings={scaleSettings} />
+        ) : (
+          <NoGammaData />
+        )}
+      </div>
     </div>
   );
 }

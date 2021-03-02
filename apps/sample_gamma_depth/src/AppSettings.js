@@ -22,6 +22,7 @@ function AppSettings({
   app,
   user,
   company,
+  layoutEnvironment,
 }) {
   const settings = { ...DEFAULT_SETTINGS, ...apiSettings };
   const { settingsWrapper } = useStyles();
@@ -36,23 +37,25 @@ function AppSettings({
   };
   return (
     <div className={settingsWrapper}>
-      <AppSettingsAssetEditor
-        settings={settings}
-        onAssetChange={onSettingChange}
-        onAssetsChange={onSettingsChange}
-        appType={{
-          primaryAsset: {
-            assetType: ASSET_TYPES.rig,
-            autocompleteSelect: true,
-          },
-          secondaryAsset: {
-            assetType: ASSET_TYPES.well,
-            autocompleteSelect: false,
-          },
-        }}
-        isNullable={false}
-        label="Active Asset"
-      />
+      {(!layoutEnvironment || layoutEnvironment.type === 'general') && (
+        <AppSettingsAssetEditor
+          settings={settings}
+          onAssetChange={onSettingChange}
+          onAssetsChange={onSettingsChange}
+          appType={{
+            primaryAsset: {
+              assetType: ASSET_TYPES.rig,
+              autocompleteSelect: true,
+            },
+            secondaryAsset: {
+              assetType: ASSET_TYPES.well,
+              autocompleteSelect: false,
+            },
+          }}
+          isNullable={false}
+          label="Active Asset"
+        />
+      )}
       <ScaleSettings
         scaleSettings={settings.scaleSettings}
         handleScaleSettingsChange={handleScaleSettingChange}
