@@ -9,7 +9,7 @@
   },
   "application": {
     "type": "ui",
-    "key": "corva.sample_gamma_depth.ui",
+    "key": "demo.gamma_demo.ui",
     "visibility": "private",
     "name": "Sample Gamma Depth",
     "category": "asset",
