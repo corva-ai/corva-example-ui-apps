@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { corvaDataApi } from '@corva/ui/clients';
+import { corvaDataAPI } from '@corva/ui/clients';
 
 
 function useFetchWellSections(assetId) {
@@ -10,7 +10,7 @@ function useFetchWellSections(assetId) {
     try {
       setLoading(true);
 
-      const response = await corvaDataApi.get(`/api/v1/data/corva/data.well-sections/`, {
+      const response = await corvaDataAPI.get(`/api/v1/data/corva/data.well-sections/`, {
         limit: 20, // NOTE: Fetch up to 20 well sections
         skip: 0, // NOTE: Required for pagination
         // NOTE: Make sure the sort field hit database inxexes. Otherwise the request will take too long
