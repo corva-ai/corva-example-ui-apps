@@ -13,7 +13,7 @@ function useFetchWellSections(assetId) {
       const response = await corvaDataAPI.get(`/api/v1/data/corva/data.well-sections/`, {
         limit: 20, // NOTE: Fetch up to 20 well sections
         skip: 0, // NOTE: Required for pagination
-        // NOTE: Make sure the sort field hit database inxexes. Otherwise the request will take too long
+        // NOTE: Make sure the sort field hit database indexes. Otherwise the request will take too long
         sort: JSON.stringify({ 'data.top_depth': -1 }),
         query: JSON.stringify({ 'asset_id': assetId }),
         // NOTE: To make efficient request - fetch only needed fields
