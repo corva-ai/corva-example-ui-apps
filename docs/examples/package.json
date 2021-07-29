@@ -12,7 +12,7 @@
     "postcss-loader": "4.1.0"
   },
   "dependencies": {
-    "@corva/ui": "file:/Users/corva/work/corva-web-repo/dist/",
+    "@corva/ui": "dev",
     "@material-ui/core": "4.11.2",
     "@material-ui/icons": "4.9.1",
     "@material-ui/lab": "4.0.0-alpha.57",
