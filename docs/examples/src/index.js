@@ -1,4 +1,4 @@
-import App from './subscriptions/UpdateEventSubscription';
+import App from './charts/HighchartsExample/HighchartExample';
 
 export default {
   component: App,

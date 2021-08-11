@@ -12,7 +12,7 @@ function App(props) {
       await corvaDataAPI.patch(`/api/v1/data/${datasetProvider}/${datasetName}/${recordId}/`,
         {
           version: 2, // NOTE: Versions is required for DATA API patch requests
-          company_id, // TODO: Remove company_id from PATCH request when it's not needed
+          company_id,
           data: {
             fieldA: 22,
             fieldB: 23,

@@ -2,7 +2,10 @@ import moment from 'moment';
 import { corvaDataAPI } from '@corva/ui/clients';
 
 function App(props) {
-  const { well: { asset_id: assetId } } = props;
+  const {
+    well: { asset_id: assetId },
+    currentUser: { company_id },
+  } = props;
 
   async function postRecordsToDataset() {
     try {
@@ -14,6 +17,7 @@ function App(props) {
           // NOTE: asset_id, version and timestamp are required fields.
           asset_id: assetId,
           version: 1,
+          company_id,
           timestamp: moment().unix() - 1,
           data: {
             fieldA: 1,
@@ -24,14 +28,15 @@ function App(props) {
         {
           asset_id: assetId,
           version: 1,
+          company_id,
           timestamp: moment().unix(),
           data: {
             fieldA: 11,
             fieldB: 12,
             fieldC: 13,
           },
-        }]);
-
+        },
+      ]);
     } catch (e) {
       console.log(e);
     }
@@ -39,9 +44,7 @@ function App(props) {
 
   return (
     <div>
-      <button onClick={postRecordsToDataset}>
-        Post records to dataset!
-      </button>
+      <button onClick={postRecordsToDataset}>Post records to dataset!</button>
     </div>
   );
 }
